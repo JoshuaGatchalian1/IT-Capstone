@@ -1,0 +1,250 @@
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: rgba(0, 0, 0, 0.85); /* Transparent black */
+  color: white;
+  height: 100%;
+}
+
+/* Centering Content */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+/* Overlay for transparency */
+.overlay {
+  background: rgba(0, 0, 0, 0.7); /* Adds a smooth blur effect */
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.05);
+  width: 90%;
+  max-width: 600px;
+  transition: transform 0.2s ease-in-out, backdrop-filter 0.2s ease;
+}
+
+/* Remove the blur on hover to avoid blurry text */
+.overlay:hover {
+  transform: scale(1.01);
+  backdrop-filter: none; /* Removes blur effect on hover */
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Subtitle */
+.subheading {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+/* Input Form */
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Buttons */
+.submit-button, .watch-button, .edit-button, .delete-button {
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submit-button {
+  background: #e50914;
+}
+
+.submit-button:hover {
+  background: #b20710;
+  transform: scale(1.03);
+}
+
+/* Stream List */
+.streamlist-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Stream Item */
+.stream-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.stream-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Watched Effect */
+.watched {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Buttons */
+.stream-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.watch-button {
+  background: #4caf50;
+}
+
+.watch-button:hover {
+  background: #388e3c;
+  transform: scale(1.03);
+}
+
+.edit-button {
+  background: #ff9800;
+}
+
+.edit-button:hover {
+  background: #e68900;
+  transform: scale(1.03);
+}
+
+.delete-button {
+  background: #e50914;
+}
+
+.delete-button:hover {
+  background: #b20710;
+  transform: scale(1.03);
+}
+
+/* Edit Input */
+.edit-input {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.edit-input:focus {
+  border-color: white;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.navbar a:hover {
+  background: #e50914;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar ul {
+      gap: 15px;
+  }
+
+  .navbar a {
+      font-size: 1rem;
+      padding: 6px 12px;
+  }
+
+  .overlay {
+      width: 95%;
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  .streamlist-title {
+      font-size: 1.5rem;
+  }
+
+  .input-field, .submit-button {
+      font-size: 0.9rem;
+      padding: 10px;
+  }
+}
