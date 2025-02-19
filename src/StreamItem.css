@@ -1,0 +1,81 @@
+/* Individual Item Style */
+.stream-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+  }
+  
+  .stream-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Watched Status */
+  .watched {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+  /* Stream Item Buttons */
+  .stream-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .watch-button,
+  .edit-button,
+  .delete-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .watch-button {
+    background: #4caf50;
+  }
+  
+  .watch-button:hover {
+    background: #388e3c;
+    transform: scale(1.05);
+  }
+  
+  .edit-button {
+    background: #ff9800;
+  }
+  
+  .edit-button:hover {
+    background: #e68900;
+    transform: scale(1.05);
+  }
+  
+  .delete-button {
+    background: #e50914;
+  }
+  
+  .delete-button:hover {
+    background: #b20710;
+    transform: scale(1.05);
+  }
+  
+  /* Edit Input Field */
+  .edit-input {
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+  }
+  
+  .edit-input:focus {
+    border-color: #e50914;
+  }
+  

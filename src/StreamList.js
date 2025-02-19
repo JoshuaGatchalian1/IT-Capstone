@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import "./App.css";
+import uuid from "react-uuid";
+import "./InputForm.css";
+import "./StreamItem.css";
+import "./StreamList.css";
 
-const categories = ["All", "Movies", "Shows", "Games"];
+const categories = ["All", "Movies"];
 
 const StreamList = () => {
   const [userInput, setUserInput] = useState("");
@@ -17,7 +20,9 @@ const StreamList = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("streams", JSON.stringify(streams));
+    if (streams.length > 0) {
+      localStorage.setItem("streams", JSON.stringify(streams));
+    }
   }, [streams]);
 
   const handleInputChange = (event) => {
@@ -27,7 +32,10 @@ const StreamList = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (userInput.trim()) {
-      setStreams([...streams, { id: Date.now(), text: userInput, category: "Movies", watched: false, isEditing: false }]);
+      setStreams([
+        ...streams,
+        { id: uuid(), text: userInput, category: "Movies", watched: false, isEditing: false },
+      ]);
       setUserInput("");
     }
   };
@@ -61,10 +69,15 @@ const StreamList = () => {
   };
 
   const onDragEnd = (result) => {
-    if (!result.destination) return;
+    const { destination, source } = result;
+    if (!destination) return; // No drop destination
+
+    // Handle invalid drop position
+    if (destination.index === source.index) return;
+
     const reorderedStreams = [...streams];
-    const [movedStream] = reorderedStreams.splice(result.source.index, 1);
-    reorderedStreams.splice(result.destination.index, 0, movedStream);
+    const [movedStream] = reorderedStreams.splice(source.index, 1);
+    reorderedStreams.splice(destination.index, 0, movedStream);
     setStreams(reorderedStreams);
   };
 
@@ -72,7 +85,9 @@ const StreamList = () => {
     <div className="home-container">
       <div className="overlay">
         <div className="content">
-          <h1>🎬 Welcome to Stream List</h1>
+          <h1>
+            <span role="img" aria-label="video game">🎮</span> Welcome to Stream List
+          </h1>
           <p className="subheading">Discover and track your favorite streams!</p>
 
           <form onSubmit={handleSubmit} className="input-form">
@@ -96,15 +111,21 @@ const StreamList = () => {
           {/* Display user-submitted streams */}
           {streams.length > 0 && (
             <div className="stream-list">
-              <h2 className="streamlist-title">📺 Your Stream List</h2>
+              <h2 className="streamlist-title">
+                <span role="img" aria-label="movie camera">🎥</span> Your Stream List
+              </h2>
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="streams">
                   {(provided) => (
-                    <ul {...provided.droppableProps} ref={provided.innerRef} className="stream-list">
+                    <ul
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                      className="stream-list"
+                    >
                       {streams
                         .filter((stream) => filterCategory === "All" || stream.category === filterCategory)
                         .map((stream, index) => (
-                          <Draggable key={stream.id} draggableId={stream.id.toString()} index={index}>
+                          <Draggable key={stream.id} draggableId={stream.id} index={index}>
                             {(provided) => (
                               <li
                                 ref={provided.innerRef}
