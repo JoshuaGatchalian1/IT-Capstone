@@ -1,0 +1,125 @@
+/* Cart Page Container */
+.cart-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    color: white;
+  }
+  
+  /* Cart Overlay */
+  .cart-overlay {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+    max-width: 700px;
+    width: 95%;
+    transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease;
+  }
+  
+  /* Cart Title */
+  .cart-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: white; /* Change to white */
+  }
+  
+  /* Cart List */
+  .cart-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Individual Cart Item */
+  .cart-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Hover effect */
+  .cart-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Movie Image */
+  .cart-item img {
+    width: 60px;
+    height: 90px;
+    border-radius: 6px;
+    margin-right: 15px;
+  }
+  
+  /* Remove Button */
+  .remove-btn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #e50914;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .remove-btn:hover {
+    background: #b20710;
+    transform: scale(1.05);
+  }
+  
+  /* Subscription Buttons */
+  .subscription-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .subscription-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 180px;
+    text-align: center;
+  }
+  
+  .subscription-btn:hover {
+    background: #444;
+    transform: scale(1.05);
+  }
+  
+  .subscription-btn.selected {
+    background: #e50914;
+  }
+  
+  /* Total */
+  .total {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white; /* Change to white */
+  }
+  

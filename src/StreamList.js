@@ -20,8 +20,11 @@ const StreamList = () => {
   }, []);
 
   useEffect(() => {
+    // Only update localStorage when the state changes
     if (streams.length > 0) {
       localStorage.setItem("streams", JSON.stringify(streams));
+    } else {
+      localStorage.removeItem("streams"); // Clear localStorage if no streams exist
     }
   }, [streams]);
 
@@ -41,7 +44,13 @@ const StreamList = () => {
   };
 
   const handleDelete = (id) => {
-    setStreams(streams.filter((stream) => stream.id !== id));
+    setStreams((prevStreams) => {
+      const newStreams = prevStreams.filter((stream) => stream.id !== id);
+      localStorage.setItem("streams", JSON.stringify(newStreams)); // Ensure state is updated in localStorage immediately
+      console.log('Updated Streams:', newStreams);
+      console.log('LocalStorage:', localStorage.getItem('streams'));
+      return newStreams;
+    });
   };
 
   const handleToggleWatched = (id) => {

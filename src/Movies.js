@@ -7,9 +7,8 @@ const Movies = () => {
 
   useEffect(() => {
     const storedMovies = localStorage.getItem("movies");
-
     if (storedMovies) {
-      setMovies(JSON.parse(storedMovies)); // Load from Local Storage if available
+      setMovies(JSON.parse(storedMovies));
     } else {
       fetchMovies();
     }
@@ -35,7 +34,7 @@ const Movies = () => {
       })
       .then((json) => {
         setMovies(json.results);
-        localStorage.setItem("movies", JSON.stringify(json.results)); // Store in Local Storage
+        localStorage.setItem("movies", JSON.stringify(json.results));
       })
       .catch((err) => setError(err.message));
   };
